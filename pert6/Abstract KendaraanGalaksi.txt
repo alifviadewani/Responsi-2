@@ -1,55 +1,58 @@
 public abstract class KendaraanGalaksi {
 
-    // ==========================================================
-    // ATRIBUT/STATE (semua private)
-    // ==========================================================
+    // ================================
+    // ATRIBUT PRIVATE
+    // ================================
+    private String namaKendaraan;
+    private int levelEnergi;     // 0–100
+    private int kapasitasPenumpang;
 
-    // TODO:
-    // - String namaKendaraan
-    // - int levelEnergi         (0–100)
-    // - int kapasitasPenumpang
-
-
-    // ==========================================================
+    // ================================
     // CONSTRUCTOR
-    // ==========================================================
+    // ================================
+    public KendaraanGalaksi(String namaKendaraan, int kapasitasPenumpang) {
+        this.namaKendaraan = namaKendaraan;
+        this.kapasitasPenumpang = kapasitasPenumpang;
+        this.levelEnergi = 100; // default
+    }
 
-    // TODO:
-    // Constructor menerima:
-    //   - namaKendaraan
-    //   - kapasitasPenumpang
-    // levelEnergi default = 100.
-
-
-    // ==========================================================
+    // ================================
     // GETTER
-    // ==========================================================
+    // ================================
+    public String getNamaKendaraan() {
+        return namaKendaraan;
+    }
 
-    // TODO: Getter namaKendaraan
-    // TODO: Getter levelEnergi
-    // TODO: Getter kapasitasPenumpang
+    public int getLevelEnergi() {
+        return levelEnergi;
+    }
 
+    public int getKapasitasPenumpang() {
+        return kapasitasPenumpang;
+    }
 
-    // ==========================================================
+    // ================================
+    // *** SETTER ENERGI (INI YG KAMU KURANG!!) ***
+    // ================================
+    protected void setEnergi(int energiBaru) {
+        if (energiBaru < 0) energiBaru = 0;
+        if (energiBaru > 100) energiBaru = 100;
+        this.levelEnergi = energiBaru;
+    }
+
+    // ================================
     // METHOD BIASA
-    // ==========================================================
+    // ================================
+    public final void tampilStatus() {
+        System.out.println(getNamaKendaraan() + " | Energi: " +
+                getLevelEnergi() + "% | Kapasitas: " +
+                getKapasitasPenumpang() + " orang");
+    }
 
-    // TODO:
-    // Method final tampilStatus()
-    // Format:
-    // "[namaKendaraan] | Energi: [levelEnergi]% | Kapasitas: [kapasitasPenumpang] awak"
-
-
-    // ==========================================================
-    // ABSTRACT METHOD (WAJIB DIIMPLEMENTASI SUBCLASS)
-    // ==========================================================
-
-    // TODO:
-    // abstract void aktifkanMesin();
-
-    // TODO:
-    // abstract void jelajah(int jarak);
-
-    // TODO:
-    // abstract void isiEnergi(int jumlah);
+    // ================================
+    // ABSTRACT METHOD
+    // ================================
+    public abstract void aktifkanMesin();
+    public abstract void jelajah(int jarak);
+    public abstract void isiEnergi(int jumlah);
 }
