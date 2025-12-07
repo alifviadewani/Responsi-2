@@ -1,17 +1,49 @@
 public class EWalletPayment implements PaymentMethod {
 
-    // TODO: Buat atribut yang diperlukan, misalnya:
-    // - nama penyedia layanan (contoh: Dana, OVO, Gopay)
-    // - jumlah saldo
-    // - nominal transaksi
+    // ======================================================
+    // ATRIBUT
+    // ======================================================
+    private String namaLayanan;    // contoh: Dana, OVO, Gopay
+    private double saldo;          // saldo e-wallet
+    private double nominalBayar;   // nominal transaksi
 
-    // TODO: Buat constructor untuk mengisi nilai atribut
+    // ======================================================
+    // CONSTRUCTOR
+    // ======================================================
+    public EWalletPayment(String namaLayanan, double saldo, double nominalBayar) {
+        this.namaLayanan = namaLayanan;
+        this.saldo = saldo;
+        this.nominalBayar = nominalBayar;
+    }
 
-    // TODO: Implementasikan semua method yang ada pada interface PaymentMethod
+    // ======================================================
+    // IMPLEMENTASI METHOD INTERFACE
+    // ======================================================
+    @Override
+    public String processPayment() {
+        double totalBayar = nominalBayar + getTransactionFee();
 
-    // Catatan:
-    // - Pada method processPayment(), lakukan pengecekan kecukupan saldo
-    // - Jika saldo cukup, kurangi saldo lalu tampilkan pesan berhasil
-    // - Jika saldo tidak cukup, tampilkan pesan gagal
+        if (saldo >= totalBayar) {
+            saldo -= totalBayar;
+            return "Pembayaran berhasil!";
+        } else {
+            return "Pembayaran gagal! Saldo tidak cukup.";
+        }
+    }
 
+    @Override
+    public String getPaymentDetails() {
+        return "Pembayaran dilakukan melalui " + namaLayanan;
+    }
+
+    @Override
+    public double getTransactionFee() {
+        return 2000;   // fee tetap sesuai PDF
+    }
+
+    @Override
+    public double getBalance() {
+        return saldo;
+    }
 }
+
