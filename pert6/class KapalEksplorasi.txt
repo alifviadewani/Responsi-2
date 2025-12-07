@@ -1,49 +1,41 @@
 public class KapalEksplorasi extends KendaraanGalaksi {
 
-    // ==========================================================
-    // ATRIBUT KHUSUS
-    // ==========================================================
+    private int modulScan;
 
-    // TODO:
-    // private int modulScan   // kemampuan scan planet (level 1–5)
+    public KapalEksplorasi(String namaKendaraan, int kapasitasPenumpang, int modulScan) {
+        super(namaKendaraan, kapasitasPenumpang);
+        this.modulScan = modulScan;
+    }
 
+    @Override
+    public void aktifkanMesin() {
+        if (getLevelEnergi() < 15) {
+            System.out.println("Energi tidak mencukupi untuk memulai ekspedisi!");
+        } else {
+            System.out.println("Kapal eksplorasi siap berangkat!");
+        }
+    }
 
-    // ==========================================================
-    // CONSTRUCTOR
-    // ==========================================================
+    @Override
+    public void jelajah(int jarak) {
+        int konsumsi = jarak * 2;
 
-    // TODO:
-    // Constructor menerima:
-    //   - namaKendaraan
-    //   - kapasitasPenumpang
-    //   - modulScan
+        if (getLevelEnergi() < konsumsi) {
+            System.out.println("Energi tidak cukup untuk menjelajah sejauh " + jarak + " km.");
+        } else {
+            setEnergi(getLevelEnergi() - konsumsi);
+            System.out.println("Kapal eksplorasi menjelajah sejauh " + jarak + " km.");
+        }
+    }
 
+    @Override
+    public void isiEnergi(int jumlah) {
+        setEnergi(getLevelEnergi() + jumlah);
+        System.out.println("Mengisi energi kapal... Energi sekarang: " + getLevelEnergi() + "%");
+    }
 
-    // ==========================================================
-    // IMPLEMENTASI ABSTRACT METHOD
-    // ==========================================================
-
-    // @Override aktifkanMesin()
-    // Jika energi < 15 → "Energi tidak mencukupi untuk memulai ekspedisi!"
-    // Jika cukup → "Kapal eksplorasi siap berangkat!"
-
-
-    // @Override jelajah(int jarak)
-    // Konsumsi energi: 2% per 1 km (lebih efisien).
-    // Jika cukup → kurangi energi & tampilkan jarak perjalanan.
-
-
-    // @Override isiEnergi(int jumlah)
-    // Tambah energi secara bertahap sampai 100%.
-    // Tampilkan pesan pengisian.
-
-
-    // ==========================================================
-    // METHOD KHUSUS
-    // ==========================================================
-
-    // TODO:
-    // void scanPlanet(String namaPlanet)
-    // Tampilkan:
-    // "Melakukan scan pada planet [namaPlanet] dengan modul level [modulScan]."
+    public void scanPlanet(String namaPlanet) {
+        System.out.println("Melakukan scan pada planet " + namaPlanet +
+                " dengan modul level " + modulScan + ".");
+    }
 }
