@@ -9,3 +9,30 @@
 4. Bagaimana keyword super membantu membedakan atribut yang memiliki nama sama antara parent dan child?
 
 5. Mengapa pendekatan inheritance lebih efisien dibanding menyalin ulang seluruh atribut dan method ke dalam class Member?
+
+Jawaban :
+1.Karena Customer punya atribut yang wajib diinisialisasi (nama, ID, total belanja).
+  Supaya konstruktor parent dijalankan, child harus memanggilnya dengan super(...).
+2.Agar data dasar Customer tetap ditampilkan.
+  Setelah itu, subclass (Member) menambah info tambahan seperti:
+  - poin
+  - level
+  Jika tidak memakai super.tampilkanInfo(), data parent hilang.
+3.Contoh:
+  saat subclass ingin menambah perilaku baru tetapi tetap menjalankan perilaku parent
+  misalnya:
+  @Override
+  void tampilkanInfo() {
+      super.tampilkanInfo(); // tampilkan info dasar
+      System.out.println("Level: Gold"); // tambah info khusus
+  }
+4.Jika parent dan child sama-sama punya atribut nama yang sama, contoh nama, maka:
+  - this.nama → atribut milik class sekarang
+  - super.nama → atribut milik parent
+  super memecahkan konflik nama variabel.
+5.- kodemu tidak duplikasi
+  - perbaikan di superclass otomatis berlaku ke subclass
+  - kode lebih pendek
+  - mudah dikembangkan
+  - struktur sistem lebih jelas
+  Tanpa inheritance, kamu harus menyalin ulang 3 atribut dan 1 method ke setiap class baru → rawan error.

@@ -8,3 +8,52 @@ Jelaskan konsep encapsulation dan bagaimana method dapat membantu melindungi dat
 Mengapa constructor tidak memiliki return type, bahkan tidak menggunakan kata kunci void?
 
 Jawaban
+Jawaban
+1.Constructor overloading adalah membuat lebih dari satu constructor dalam satu class dengan jumlah atau tipe parameter yang berbeda.
+  Tujuannya agar objek bisa dibuat dalam berbagai kondisi/data yang tersedia.
+  Contoh sederhana :
+  BarangMusik(String kode, String nama) {}
+  BarangMusik(String kode, String nama, double harga) {}
+  BarangMusik(String kode, String nama, double harga, int stok) {}
+2.Java membedakan constructor berdasarkan signature, yaitu:
+   - Jumlah parameter
+   - Tipe data parameter
+   - Urutan parameter
+   Java tidak membedakan berdasarkan nama parameter.
+   contoh :
+   BarangMusik(String kode, String nama)
+   BarangMusik(String kode, String nama, double harga)
+3.Mengakses Langsung:
+    - Memberikan akses penuh ke variabel
+    - Tidak ada validasi
+    - Berbahaya jika data penting
+    - Tidak mendukung encapsulation
+  Mengakses Setter :
+    - Akses lebih terkontrol
+    - Bisa menambah validasi
+    - Lebih aman dan sesuai prinsip OOP
+    - Menerapkan encapsulation
+  Contoh bahaya akses langsung :
+  barang.stok = -5; // tidak masuk akal
+  Dengan Setter :
+  barang.stok = -5; // tidak masuk akal
+4.Encapsulation adalah konsep OOP di mana data (variabel) harus disembunyikan dari luar class menggunakan private, dan hanya bisa diakses melalui getter/setter.
+  Tujuan utama:
+  - Melindungi data dari perubahan sembarangan
+  - Menjaga konsistensi dan validasi data
+  - Mencegah error
+  - Mewujudkan aturan internal class
+  contoh :
+  private int stok;
+
+  public void setStok(int s) {
+      if (s >= 0) stok = s; // validasi
+  }
+5.Karena:
+  1.Constructor bukan method biasa, tapi mekanisme khusus untuk membuat dan menginisialisasi objek.
+  2.Tujuannya mengembalikan objek itu sendiri, tetapi bukan melalui nilai return — itu dilakukan secara internal oleh Java.
+  3.Jika constructor diberi return type, Java akan menganggapnya sebagai method biasa, bukan constructor.
+  contoh salah :
+  - void BarangMusik() {} // Ini bukan constructor
+  contoh benar :
+  - void BarangMusik() {} // Ini bukan constructor

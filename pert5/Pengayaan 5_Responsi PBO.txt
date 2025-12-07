@@ -5,3 +5,20 @@ Jawablah pertanyaan berikut:
 3. Apa perbedaan override dan overload?
 4. Apa keuntungan menggunakan polimorfisme dalam sistem inventaris seperti contoh di atas?
 5. Bagaimana cara kerja dynamic dispatch pada Java saat memanggil method override?
+
+Jawaban :
+1.Polimorfisme: satu referensi parent bisa menyimpan objek berbagai subclass dan memanggil versi method yang berbeda sesuai jenis objeknya.
+  Override: subclass membuat ulang method parent dengan implementasi baru.
+2.Karena MesinMotor dan MesinTraktor extends DefaultMesin, sehingga dianggap sebagai tipe DefaultMesin juga (upcasting).
+3.Override
+  - Parent → child
+  - Signature sama
+  - Runtime polymorphism
+  Overload
+  - Dalam class yang sama
+  - Signature beda
+  - Compile time polymorphism
+4.- mudah menambahkan jenis mesin baru
+  - satu loop bisa memproses semua mesin
+  - kode lebih fleksibel dan minim duplikasi
+5.Saat sebuah method dipanggil melalui referensi parent, Java akan melihat objek sebenarnya (bukan tipe referensinya) untuk menentukan method mana yang dijalankan → ini disebut dynamic dispatch.

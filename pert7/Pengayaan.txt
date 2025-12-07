@@ -6,3 +6,36 @@ Setelah menyelesaikan kode, jawab pertanyaan berikut:
 3. Apa tujuan penggunaan keyword "implements" pada sebuah class?
 4. Apakah sebuah class dapat mengimplementasikan lebih dari satu interface? Jelaskan dan berikan contoh sederhana.
 5. Jika sebuah class mengimplementasikan interface, apa yang terjadi jika class tersebut tidak mengimplementasikan semua method dari interface tersebut?
+
+Jawaban :
+1.Interface:
+  - Tidak memiliki implementasi method (kecuali default & static).
+  - Semua method-nya bersifat abstract (sebelum Java 8).
+  - Digunakan sebagai kontrak perilaku.
+  - Tidak boleh memiliki state yang penuh (hanya public static final untuk variabel).
+  - Tidak bisa dibuat objeknya.
+  Class biasa:
+  - Dapat memiliki atribut (state) dan method dengan implementasi lengkap.
+  - Bisa dibuat objek.
+  - Mendukung inheritance (extends).
+  - Bisa memiliki constructor.
+2.Karena interface dirancang sebagai kontrak perilaku, bukan tempat logika program.
+  Interface hanya mendefinisikan apa yang harus dilakukan, bukan bagaimana melakukannya.
+  Dengan begitu, setiap class dapat memberikan versi implementasinya sendiri.
+3.Keyword implements digunakan agar sebuah class:
+  - Menyatakan bahwa class tersebut mewajibkan dirinya mengikuti seluruh aturan yang ditetapkan interface.
+  - Mengimplementasikan SEMUA method abstract yang ada pada interface.
+ Contoh:
+ class EWalletPayment implements PaymentMethod { }
+ Artinya: class ini harus memiliki semua method dari PaymentMethod.
+4.Ya bisa.
+  Inilah salah satu kelebihan interface dibanding inheritance.
+  Java tidak mendukung multiple inheritance class, tetapi mendukung multiple interface.
+  Contoh:
+  class SmartRobot implements SensorSystem, MovementControl { }
+  Berarti SmartRobot wajib mengimplementasikan semua method dari dua interface sekaligus.
+5.Maka akan terjadi error kompilasi, yaitu:
+    Class must be declared abstract or implement abstract method ...
+  Solusi:
+  - Implementasikan semua method, atau
+  - Jadikan class tersebut abstract.

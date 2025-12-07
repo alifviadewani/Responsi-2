@@ -7,3 +7,15 @@ Apa yang terjadi jika kita mencoba mengubah nilai suatu konstanta setelah objek 
 Bagaimana cara mendefinisikan konstanta dalam bahasa Java?
 
 Jawaban
+awaban :
+1.Fungsi → method yang mengembalikan nilai. Contoh: double hitungBMI().
+   Prosedur → method yang tidak mengembalikan nilai (void). Contoh: void tampilKategori().
+2.Pentingnya konstanta (final variable)
+   Karena nilainya tetap, tidak dapat diubah oleh programmer, sehingga:
+   - Mencegah kesalahan logika
+   - Lebih aman
+   - Menjelaskan bahwa nilai itu “tetapan” standar
+3.Java akan error:
+  cannot assign a value to final variable
+4.final double PI = 3.14;
+  final int MAX_USER = 100;

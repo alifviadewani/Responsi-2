@@ -6,3 +6,34 @@ Setelah menyelesaikan kode, jawab pertanyaan berikut:
 3. Mengapa subclass wajib mengimplementasikan semua abstract method dari parent class?
 4. Mengapa abstract method tidak boleh memiliki isi implementasi di dalam abstract class?
 5. Bagaimana abstract class dapat mendukung konsep polimorfisme, dan mengapa objek yang direferensikan melalui tipe abstract class tetap dapat menjalankan perilaku berbeda pada masing-masing subclass?
+
+Jawaban :
+1.Abstract class adalah class yang tidak bisa dibuat objek langsung, dan berfungsi sebagai kerangka dasar untuk class-class turunannya.
+  Kita membutuhkan abstract class karena:
+  - Memberikan struktur umum yang wajib dimiliki oleh semua subclass.
+  - Memastikan subclass memiliki perilaku inti yang sama, namun boleh berbeda implementasi.
+  - Cocok saat ada konsep “jenis kendaraan berbeda tapi karakter dasar sama” seperti pada soal KendaraanGalaksi.
+2.Abstract Class
+  - Tidak bisa dibuat objek (no instance).
+  - Boleh memiliki abstract method (tanpa isi).
+  - Biasanya digunakan sebagai kerangka dasar/konsep umum.
+  - Dapat memiliki method biasa + abstract method.
+  Class Biasa
+  - Bisa dibuat objek.
+  - Tidak boleh memiliki abstract method.
+  - Digunakan sebagai class yang lengkap dan siap dipakai.
+  - hanya method biasa.
+3.Karena abstract method hanyalah kontrak atau janji tanpa isi.
+  Subclass yang mewarisi abstract class harus mengisi dan menjelaskan bagaimana perilaku sebenarnya dilakukan.
+  ika subclass tidak mengimplementasikan abstract method, maka class tersebut juga otomatis menjadi abstract.
+4.Karena abstract method bertujuan untuk:
+  - Menjadi template umum tanpa menentukan cara kerjanya.
+  - Memberi kebebasan kepada subclass untuk membuat implementasi yang spesifik sesuai kebutuhan masing-masing.
+  Jika abstract method punya isi, definisinya bertentangan dengan konsep “abstract” yang berarti belum ada bentuk/implementasinya.
+5.Abstract class mendukung polimorfisme karena:
+  - Kita dapat menyimpan berbagai objek subclass dalam satu referensi bertipe abstract class.
+    contoh:
+    KendaraanGalaksi k = new PesawatTempur(...);
+  - Saat memanggil method abstract (yang telah di-override di subclass), Java akan menjalankan versi method milik subclass, bukan versi parent-nya.
+  Ini terjadi karena mekanisme dynamic dispatch, yaitu pemilihan method dilakukan berdasarkan objek sebenarnya, bukan tipe referensinya.
+  Sehingga meskipun variabel bertipe abstract class, perilaku yang dijalankan tetap milik masing-masing subclass.
